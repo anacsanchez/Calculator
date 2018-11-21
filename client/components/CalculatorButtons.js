@@ -1,12 +1,12 @@
 import React from 'react';
 import { InputButton } from './index';
 
-const CalcButtons = ({addInput, clearInput}) => {
+const CalculatorButtons = ({addInput, clearInput}) => {
   return (
     <div id="buttons">
       {
       Object.keys(inputBtns).map(key => {
-        return <div key={key}><InputButton name={key} handleInput={addInput} value={inputBtns[key]} /></div>
+        return <div key={key} className="input-button"><InputButton name={key} handleInput={addInput} value={inputBtns[key]} /></div>
       })
       }
       <div>
@@ -16,7 +16,7 @@ const CalcButtons = ({addInput, clearInput}) => {
   )
 }
 
-export default CalcButtons;
+export default CalculatorButtons;
 
 const inputBtns = {
   "zero": 0,
