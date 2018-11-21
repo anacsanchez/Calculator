@@ -3,9 +3,7 @@ import { Calculator } from './components';
 
 const App = () => {
   return (
-    <div>
-      <Calculator />
-    </div>
+    <Calculator />
   )
 }
 export default App;

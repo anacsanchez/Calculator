@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { InputButton } from './index';
+import { CalcButtons } from './index';
 
 class Calculator extends Component {
   constructor(props) {
@@ -18,7 +18,6 @@ class Calculator extends Component {
   }
 
   addInput = (val) => {
-
     let { input } = this.state;
     let value = val.toString();
     if(value == '=') {
@@ -80,15 +79,14 @@ class Calculator extends Component {
 
   render() {
     return (
-      <div>
-        <div>Equation: {this.state.equation}</div>
-        <div>Input: {this.state.input}</div>
-        <ul>
-        {
-          Object.keys(inputBtns).map(key => <li key={key}><InputButton name={key} handleInput={this.addInput} value={inputBtns[key]} /></li>)
-        }
-        <li><button onClick={this.clearInput}>AC</button></li>
-        </ul>
+      <div id="calculator">
+        <div id="equation">
+          <p>{this.state.equation}</p>
+        </div>
+        <div id="display">
+          <p>{this.state.input}</p>
+        </div>
+        <CalcButtons addInput={this.addInput} clearInput={this.clearInput} />
       </div>
     )
   }
@@ -103,7 +101,7 @@ function calcEquation(equation) {
   if (!operators.length || operands.length<2) {
     return equation;
   }
-  const allOps = ['/','x','+','-'];
+  const allOps = ['/','x','-','+'];
   let i = 0;
   let j = 0;
   let result;
@@ -131,25 +129,6 @@ function calcEquation(equation) {
     }
   }
   return Number.parseFloat(result.toPrecision(4));
-}
-
-const inputBtns = {
-  "zero": 0,
-  "one": 1,
-  "two": 2,
-  "three": 3,
-  "four": 4,
-  "five": 5,
-  "six": 6,
-  "seven": 7,
-  "eight": 8,
-  "nine": 9,
-  "multiply": "x",
-  "divide": "/",
-  "subtract":"-",
-  "add":"+",
-  "decimal":".",
-  "equals":"="
 }
 
 function isOperator(input) {
