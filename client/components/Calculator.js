@@ -59,10 +59,10 @@ class Calculator extends Component {
       return;
     }
     else if((input == '0') || (isOperator(this.state.input) && !isOperator(value)) || (isOperator(value) && !isOperator(input[input.length -1]))){
-      this.setState({
-        equation: this.state.equation + value,
+      this.setState(prevState => ({
+        equation: prevState.equation + value,
         input: value
-      })
+      }))
     }
     else if(isOperator(input) && isOperator(value)) {
       this.setState({
